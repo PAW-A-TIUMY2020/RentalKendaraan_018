@@ -33,7 +33,7 @@ namespace RentalKendaraan_018
             });
 
             services.AddDbContext<Models.Rental_KendaraanContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+            options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
