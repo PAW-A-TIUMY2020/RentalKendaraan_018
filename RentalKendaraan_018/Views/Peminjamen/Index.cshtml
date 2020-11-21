@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RentalKendaraan_018.Models.Peminjaman>
+﻿@model PaginatedList<RentalKendaraan_018.Models.Peminjaman>
 
 @{
     ViewData["Title"] = "Index";
@@ -20,22 +20,23 @@
 }
 
 <table class="table">
+
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.TglPeminjaman)
+                TglPeminjaman
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Biaya)
+                Biaya
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdCustomerNavigation)
+                IdCustomerNavigation
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdJaminanNavigation)
+                IdJaminanNavigation
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdKendaraanNavigation)
+                IdKendaraanNavigation
             </th>
             <th></th>
         </tr>
@@ -68,3 +69,25 @@
         }
     </tbody>
 </table>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-currentfilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-currentfilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
+
