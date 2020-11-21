@@ -9,6 +9,16 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+@using (Html.BeginForm("Index", "Kendaraan", FormMethod.Get))
+{
+    <p>
+        Ketersediaan: @Html.DropDownList("ktsd", "Pilih Ketersediaan")
+        Cari Data : @Html.TextBox("searchString")
+        <input type="submit" value="Filter"/>
+    </p>
+}
+
 <table class="table">
     <thead>
         <tr>
