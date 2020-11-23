@@ -23,10 +23,14 @@
     <thead>
         <tr>
             <th>
-                TglPengembalian
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
+                    Tanggal Pengembalian
+                </a>
             </th>
             <th>
-                Denda
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
+                    Denda
+                </a>
             </th>
             <th>
                 IdKondisiNavigation
