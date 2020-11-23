@@ -38,6 +38,26 @@ namespace RentalKendaraan_018.Controllers
                 menu = menu.Where(s => s.NoHp.Contains(searchString) || s.NamaCustomer.Contains(searchString) || s.Alamat.Contains(searchString)
                 || s.Nik.Contains(searchString));
             }
+
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    menu = menu.OrderByDescending(s => s.NamaCustomer);
+                    break;
+                case "Date":
+                    menu = menu.OrderBy(s => s.IdGenderNavigation.NamaGender);
+                    break;
+                case "date_desc":
+                    menu = menu.OrderByDescending(s => s.IdGenderNavigation.NamaGender);
+                    break;
+                default:
+                    menu = menu.OrderBy(s => s.NamaCustomer);
+                    break;
+            }
+
             ViewData["CurrentSort"] = sortOrder;
 
             if (searchString != null)

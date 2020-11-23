@@ -23,7 +23,9 @@
     <thead>
         <tr>
             <th>
-                NamaCustomer
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
+                    Nama
+                </a>
             </th>
             <th>
                 Nik
@@ -35,7 +37,9 @@
                 NoHp
             </th>
             <th>
-                IdGenderNavigation
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
+                    Gender
+                </a>
             </th>
             <th></th>
         </tr>
