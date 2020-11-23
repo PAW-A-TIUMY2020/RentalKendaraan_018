@@ -23,7 +23,9 @@
     <thead>
         <tr>
             <th>
-                NamaJaminan
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
+                    Jaminan
+                </a>
             </th>
             <th></th>
         </tr>
