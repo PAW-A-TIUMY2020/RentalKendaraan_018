@@ -25,12 +25,30 @@ namespace RentalKendaraan_018.Controllers
             var ktsdQuery = from d in _context.JenisKendaraan orderby d.NamaJenisKendaraan select d.NamaJenisKendaraan;
             ktsdList.AddRange(ktsdQuery.Distinct());
             ViewBag.ktsd = new SelectList(ktsdList);
-            var menu = from m in _context.JenisKendaraan.Include(k => k.IdJenisKendaraan) select m;
+            var menu = from m in _context.JenisKendaraan select m;
 
 
             if (!string.IsNullOrEmpty(ktsd))
             {
                 menu = menu.Where(x => x.NamaJenisKendaraan == ktsd);
+            }
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                menu = menu.Where(s => s.NamaJenisKendaraan.Contains(searchString));
+            }
+
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    menu = menu.OrderByDescending(s => s.NamaJenisKendaraan);
+                    break;
+                default:
+                    menu = menu.OrderBy(s => s.NamaJenisKendaraan);
+                    break;
             }
 
             ViewData["CurrentSort"] = sortOrder;
