@@ -23,7 +23,9 @@
     <thead>
         <tr>
             <th>
-                NamaKendaraan
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
+                    Kendaraan
+                </a>
             </th>
             <th>
                 NoPolisi
@@ -32,7 +34,9 @@
                 NoStnk
             </th>
             <th>
-                Ketersediaan
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
+                    Ketersediaan
+                </a>
             </th>
             <th>
                 IdJenisKendaraanNavigation
