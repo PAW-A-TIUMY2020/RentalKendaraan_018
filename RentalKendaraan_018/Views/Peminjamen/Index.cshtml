@@ -24,19 +24,23 @@
     <thead>
         <tr>
             <th>
-                TglPeminjaman
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
+                    Tanggal Peminjaman
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
+                    Customer
+                </a>
             </th>
             <th>
                 Biaya
             </th>
             <th>
-                IdCustomerNavigation
+                Jaminan
             </th>
             <th>
-                IdJaminanNavigation
-            </th>
-            <th>
-                IdKendaraanNavigation
+                Kendaraan
             </th>
             <th></th>
         </tr>

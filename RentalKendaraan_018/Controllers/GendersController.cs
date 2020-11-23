@@ -32,8 +32,9 @@ namespace RentalKendaraan_018.Controllers
             {
                 menu = menu.Where(x => x.NamaGender == ktsd);
             }
-            ViewData["CurrentSort"] = sortOrder;
 
+
+            ViewData["CurrentSort"] = sortOrder;
             if (searchString != null)
             {
                 pageNumber = 1;
