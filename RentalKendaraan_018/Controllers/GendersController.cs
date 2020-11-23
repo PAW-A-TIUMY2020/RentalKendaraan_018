@@ -25,7 +25,7 @@ namespace RentalKendaraan_018.Controllers
             var ktsdQuery = from d in _context.Gender orderby d.NamaGender select d.NamaGender;
             ktsdList.AddRange(ktsdQuery.Distinct());
             ViewBag.ktsd = new SelectList(ktsdList);
-            var menu = from m in _context.Gender.Include(k => k.IdGender) select m;
+            var menu = from m in _context.Gender select m;
 
 
             if (!string.IsNullOrEmpty(ktsd))
@@ -33,6 +33,23 @@ namespace RentalKendaraan_018.Controllers
                 menu = menu.Where(x => x.NamaGender == ktsd);
             }
 
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                menu = menu.Where(s => s.NamaGender.Contains(searchString));
+            }
+
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    menu = menu.OrderByDescending(s => s.NamaGender);
+                    break;
+                default:
+                    menu = menu.OrderBy(s => s.NamaGender);
+                    break;
+            }
 
             ViewData["CurrentSort"] = sortOrder;
             if (searchString != null)
