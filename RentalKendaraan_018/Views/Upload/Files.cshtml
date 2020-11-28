@@ -1,7 +1,16 @@
-﻿
-@{
-    ViewData["Title"] = "Files";
-}
+﻿@model RentalKendaraan_018.Models.Upload.FilesViewModel
 
-<h2>Files</h2>
+<p> List of Files </p>
+
+<ul>
+    @foreach (var item in Model.Files)
+    {
+        <li>
+            <a asp-action="Download"
+                asp-route-filename="@item.Name">
+            </a>
+        </li>
+    }
+</ul>
+
 
